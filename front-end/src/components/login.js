@@ -21,8 +21,13 @@ const Login = () => {
         const res = await axios.post("http://localhost:5000/login", body)
         console.log('response', res.data)
         if (res.status == 200) {
-            localStorage.setItem("user", JSON.stringify(res.data))
-            navigate("/")
+            if (res.data.email) {
+                localStorage.setItem("user", JSON.stringify(res.data))
+                navigate("/")
+            } else {
+                alert("Please enter correct details")
+            }
+
         }
     };
 

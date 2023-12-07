@@ -22,7 +22,7 @@ const Signup = () => {
     console.log('response', res.data)
     if (res.status == 200) {
       localStorage.setItem("user", JSON.stringify(res.data))
-      navigate("/")
+      navigate("/login")
     }
   };
 
