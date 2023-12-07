@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useParams, useNavigate } from 'react-router-dom';
 
-const AddProduct = () => {
+const UpdateProduct = () => {
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
@@ -9,8 +10,25 @@ const AddProduct = () => {
     const [company, setCompany] = useState("");
     const [error, setError] = useState(false);
     const User = JSON.parse(localStorage.getItem("user"))
+    const params = useParams()
+    const navigate = useNavigate()
 
-    const handleAddProduct = async () => {
+    useEffect(() => {
+        getProductDetails()
+    }, [])
+
+    const getProductDetails = async () => {
+        let result = await axios.get(`http://localhost:5000/product/${params.id}`)
+        if (result.data) {
+            let res = result.data
+            setName(res.name)
+            setPrice(res.price)
+            setCategory(res.category)
+            setCompany(res.company)
+        }
+    }
+
+    const handleUpdateProduct = async () => {
         console.log(name)
         if (!name || !price || !category || !company) {
             setError(true)
@@ -20,19 +38,21 @@ const AddProduct = () => {
         let userId = User._id
         let obj = { name, price, category, company, userId }
         console.log('obj', obj)
-        const res = await axios.post("http://localhost:5000/add-product", obj)
+        const res = await axios.put(`http://localhost:5000/product/${params.id}`, obj)
+        console.log('res', res.data)
         if (res.status == 200) {
             setName("")
             setPrice("")
             setCategory("")
             setCompany("")
+            navigate("/")
         }
 
     }
 
     return (
         <div className='product'>
-            <h2>Add Product</h2>
+            <h2>Update Product</h2>
             <input
                 className="inputBox"
                 type="text"
@@ -77,12 +97,12 @@ const AddProduct = () => {
             <button
                 className="add-btn"
                 type="button"
-                onClick={() => handleAddProduct()}
+                onClick={() => handleUpdateProduct()}
             >
-                Add Product
+                Update Product
             </button>
         </div>
     )
 }
 
-export default AddProduct
+export default UpdateProduct

@@ -6,6 +6,8 @@ import Signup from './components/signup';
 import ProtectedRoute from './components/protectedRoute';
 import Login from './components/login';
 import AddProduct from './components/addProduct';
+import ProductList from './components/productList';
+import UpdateProduct from './components/updateProduct';
 
 
 function App() {
@@ -14,9 +16,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route element={<ProtectedRoute />}>
-          <Route path='/' element={<h1>Product</h1>} />
+          <Route path='/' element={<ProductList />} />
           <Route path='/add' element={<AddProduct />} />
-          <Route path='/update' element={<h1>Product</h1>} />
+          <Route path='/update/:id' element={<UpdateProduct />} />
           <Route path='/profile' element={<h1>Product</h1>} />
           <Route path='/logout' element={<h1>Product</h1>} />
         </Route>
