@@ -38,7 +38,8 @@
 
 /* foter end */
 
-.login {
+.login,
+.product {
   margin-left: 30%;
 }
 .signup {
@@ -52,6 +53,10 @@
   margin-left: 2%;
 }
 
+.product > h2 {
+  margin-left: 2%;
+}
+
 .inputBox {
   display: block;
   margin: 20px;
@@ -60,8 +65,7 @@
   border: 1px solid skyblue;
 }
 
-.signup-btn,
-.login-btn {
+.add-btn {
   padding: 10px;
   margin: 25px;
   width: 150px;
@@ -77,4 +81,11 @@
   border-radius: 50%;
   margin-top: 5px;
   margin-left: 20px;
+}
+.invalid-input {
+  color: red;
+  margin-top: -20px;
+  display: block;
+  margin-left: 20px;
+  font-size: 12px;
 }

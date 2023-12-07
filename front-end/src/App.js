@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import Signup from './components/signup';
 import ProtectedRoute from './components/protectedRoute';
 import Login from './components/login';
+import AddProduct from './components/addProduct';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoute />}>
           <Route path='/' element={<h1>Product</h1>} />
-          <Route path='/add' element={<h1>Product</h1>} />
+          <Route path='/add' element={<AddProduct />} />
           <Route path='/update' element={<h1>Product</h1>} />
           <Route path='/profile' element={<h1>Product</h1>} />
           <Route path='/logout' element={<h1>Product</h1>} />

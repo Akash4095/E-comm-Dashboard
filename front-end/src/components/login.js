@@ -6,6 +6,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(false);
 
     const navigate = useNavigate()
     const auth = localStorage.getItem("user")
@@ -18,6 +19,10 @@ const Login = () => {
 
     const handleLogin = async () => {
         let body = { email: email, password: password }
+        if (!email || !password) {
+            setError(true)
+            return false
+        }
         const res = await axios.post("http://localhost:5000/login", body)
         console.log('response', res.data)
         if (res.status == 200) {
@@ -42,6 +47,9 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
+            {
+                error && !email && <span className='invalid-input'>Enter Valid Email</span>
+            }
             <input
                 className="inputBox"
                 type="password"
@@ -49,8 +57,11 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+            {
+                error && !password && <span className='invalid-input'>Enter Valid Password</span>
+            }
             <button
-                className="login-btn"
+                className="add-btn"
                 type="button"
                 onClick={() => handleLogin()}
             >

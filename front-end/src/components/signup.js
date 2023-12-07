@@ -6,6 +6,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate()
   const auth = localStorage.getItem("user")
@@ -17,6 +18,10 @@ const Signup = () => {
   }, [])
 
   const handleSignup = async () => {
+    if (!name || !email || !password) {
+      setError(true)
+      return false
+    }
     let body = { name: name, email: email, password: password }
     const res = await axios.post("http://localhost:5000/signup", body)
     console.log('response', res.data)
@@ -37,6 +42,9 @@ const Signup = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      {
+        error && !name && <span className='invalid-input'>Enter Valid Name</span>
+      }
       <input
         className="inputBox"
         type="text"
@@ -44,6 +52,9 @@ const Signup = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      {
+        error && !email && <span className='invalid-input'>Enter Valid Email</span>
+      }
       <input
         className="inputBox"
         type="password"
@@ -51,8 +62,11 @@ const Signup = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      {
+        error && !password && <span className='invalid-input'>Enter Valid Password</span>
+      }
       <button
-        className="signup-btn"
+        className="add-btn"
         type="button"
         onClick={() => handleSignup()}
       >
