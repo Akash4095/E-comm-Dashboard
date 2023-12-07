@@ -16,13 +16,35 @@
   color: #fff;
 }
 
-
 /* Footer styling */
 
-.footer{
+.footer {
   position: absolute;
   bottom: 0;
   padding: 10px;
   width: 100%;
   background-color: skyblue;
+}
+
+/* foter end */
+
+.signup {
+  margin-left: 30%;
+}
+
+.inputBox {
+  display: block;
+  margin: 20px;
+  padding: 8px;
+  width: 300px;
+  border: 1px solid skyblue;
+}
+
+.signup-btn {
+  padding: 10px;
+  margin: 25px;
+  width: 150px;
+  background-color: skyblue;
+  border: 1px solid;
+  cursor: pointer;
 }
