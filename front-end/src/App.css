@@ -3,7 +3,7 @@
 .nav-ul {
   padding: 5px;
   margin: 0;
-  background-color: skyblue;
+  background-color: #0f1111;
 }
 .nav-ul li {
   display: inline-block;
@@ -23,13 +23,24 @@
   bottom: 0;
   padding: 10px;
   width: 100%;
-  background-color: skyblue;
+  background-color: #0f1111;
+  color: #fff;
 }
 
 /* foter end */
 
+.login {
+  margin-left: 30%;
+}
 .signup {
   margin-left: 30%;
+}
+
+.signup > h2 {
+  margin-left: 2%;
+}
+.login > h2 {
+  margin-left: 2%;
 }
 
 .inputBox {
@@ -40,7 +51,8 @@
   border: 1px solid skyblue;
 }
 
-.signup-btn {
+.signup-btn,
+.login-btn {
   padding: 10px;
   margin: 25px;
   width: 150px;
