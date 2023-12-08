@@ -92,7 +92,15 @@
 
 .productlist {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10px;
+
+}
+
+.list-scroll {
+  height: 50vh;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 .productlist ul li {
@@ -121,4 +129,12 @@
   font-size: 11px;
   cursor: pointer;
   border-radius: 10px;
+}
+
+.search-box {
+  width: 400px;
+  margin: 20px;
+  height: 40px;
+  border: 1px solid skyblue;
+  padding-left: 10px;
 }

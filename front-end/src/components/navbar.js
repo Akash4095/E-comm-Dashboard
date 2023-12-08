@@ -19,7 +19,7 @@ const Navbar = () => {
                     <ul className='nav-ul'>
                         <li> <Link to="/" >Products</Link> </li>
                         <li> <Link to="/add" >Add Product</Link> </li>
-                        <li> <Link to="/update" >Update Product</Link> </li>
+                        
                         <li> <Link to="/profile" >Profile</Link> </li>
 
                         {auth ? <li> <Link to="/login" onClick={() => handleLogout()}>Logout <span className='username'>({JSON.parse(auth).name})</span> </Link> </li> :
