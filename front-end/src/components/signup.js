@@ -26,7 +26,7 @@ const Signup = () => {
     const res = await axios.post("http://localhost:5000/signup", body)
     console.log('response', res.data)
     if (res.status == 200) {
-      localStorage.setItem("user", JSON.stringify(res.data))
+      localStorage.setItem("user", JSON.stringify(res.data.result))
       navigate("/login")
     }
   };

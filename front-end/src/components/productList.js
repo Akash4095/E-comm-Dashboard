@@ -24,8 +24,11 @@ const ProductList = () => {
     }
 
     const handleSearch = async (value) => {
+        const authToken = JSON.parse(localStorage.getItem('authToken'))
+        const headers = { Authorization: `Bearer ${authToken}` }
+        // console.log('headers', headers)
         if (value) {
-            let result = await axios.get(`http://localhost:5000/search/${value}`)
+            let result = await axios.get(`http://localhost:5000/search/${value}`, { headers })
             if (result.status == 200) {
                 setProducts(result.data)
             }
@@ -38,7 +41,7 @@ const ProductList = () => {
 
     return (
         <div className='productlist'>
-            <h3>Product List</h3>
+            <div className='heading'>Product List</div>
             <input type='text' placeholder='Search Products' className='search-box' onChange={(e) => handleSearch(e.target.value)} />
 
             <ul>

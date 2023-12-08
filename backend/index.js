@@ -5,7 +5,8 @@ const User = require('./db/user')
 const Product = require('./db/product')
 const app = express()
 
-
+const Jwt = require('jsonwebtoken')
+const jwtKey = 'E-comm-Node'
 app.use(express.json())
 app.use(cors())
 
@@ -14,14 +15,30 @@ app.post("/signup", async (req, res) => {
     let result = await user.save()
     result = result.toObject()
     delete result.password
-    res.send(result)
+    if (result) {
+        Jwt.sign({ result }, jwtKey, { expiresIn: '2h' }, (err, token) => {
+            if (err) {
+                res.send({ result: "Something went wrong Please login again" })
+            } else {
+                res.send({ result, authToken: token })
+            }
+
+        })
+    }
 })
 
 app.post("/login", async (req, res) => {
     if (req.body.password && req.body.email) {
         let user = await User.findOne(req.body).select("-password")  // select("-password") toremove password
         if (user) {
-            res.send(user)
+            Jwt.sign({ user }, jwtKey, { expiresIn: '2h' }, (err, token) => {
+                if (err) {
+                    res.send({ result: "Something went wrong" })
+                } else {
+                    res.send({ user, authToken: token })
+                }
+
+            })
         } else {
             res.send({ result: "No User Found" })
         }
@@ -72,7 +89,7 @@ app.put("/product/:id", async (req, res) => {
     res.send(result)
 })
 
-app.get("/search/:key", async (req, res) => {
+app.get("/search/:key", verifyToken, async (req, res) => {
     let result = await Product.find(
         {
             "$or": [
@@ -90,5 +107,25 @@ app.get("/search/:key", async (req, res) => {
 
 })
 
+
+async function verifyToken(req, res, next) {
+    let token = req.headers['authorization']
+    // console.log('middleware called', token)
+    if (token) {
+        token = token.split(' ')[1]
+        // console.log('token', token)
+        Jwt.verify(token, jwtKey, (err, valid) => {
+            if (err) {
+                res.status(401).send({ result: "Please provide valid token with header" })
+            } else {
+                next()
+            }
+        })
+    } else {
+        res.status(403).send({ result: "Please add token with header" })
+    }
+}
+
+// app.use(verifyToken)   // to apply token auth on all apis
 
 app.listen(5000)

@@ -28,7 +28,7 @@
 /* Footer styling */
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   padding: 10px;
   width: 100%;
@@ -137,4 +137,9 @@
   height: 40px;
   border: 1px solid skyblue;
   padding-left: 10px;
+}
+
+.heading{
+  font-size: 18px;
+  font-weight: 600;
 }
