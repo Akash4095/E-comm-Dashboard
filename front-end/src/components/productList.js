@@ -48,6 +48,7 @@ const ProductList = () => {
                 <li>S No.</li>
                 <li>Name</li>
                 <li>Price</li>
+                <li>Company</li>
                 <li>Category</li>
                 <li>Actions</li>
             </ul>
@@ -58,6 +59,7 @@ const ProductList = () => {
                             <li>{index + 1}</li>
                             <li>{item.name}</li>
                             <li>{item.price}</li>
+                            <li>{item.company}</li>
                             <li>{item.category}</li>
                             <li><button onClick={() => handleDeleteItem(item)} className='del-btn'>Delete</button>
                                 <Link to={"/update/" + item._id} >

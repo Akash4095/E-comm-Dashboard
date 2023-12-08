@@ -96,6 +96,7 @@ app.get("/search/:key", verifyToken, async (req, res) => {
                 { name: { $regex: req.params.key } },
                 { company: { $regex: req.params.key } },
                 { category: { $regex: req.params.key } },
+                { price: { $regex: req.params.key } },
             ]
         }
     )

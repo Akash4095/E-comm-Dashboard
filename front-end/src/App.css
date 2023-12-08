@@ -137,6 +137,7 @@
   height: 40px;
   border: 1px solid skyblue;
   padding-left: 10px;
+  border-radius: 10px;
 }
 
 .heading{
