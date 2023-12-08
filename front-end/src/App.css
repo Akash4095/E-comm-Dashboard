@@ -1,10 +1,13 @@
 /* navbar styling  */
 
 .nav-ul {
-  padding: 5px;
-  margin: 0;
+  padding: 2px 0px;
+  margin: 0 !important;
   background-color: #0f1111;
-  width: 100%;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 .nav-ul li {
   display: inline-block;
@@ -30,7 +33,7 @@
 .footer {
   position: fixed;
   bottom: 0;
-  padding: 10px;
+  padding: 15px;
   width: 100%;
   background-color: #0f1111;
   color: #fff;
@@ -40,21 +43,28 @@
 
 .login,
 .product {
-  margin-left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .signup {
-  margin-left: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.signup > h2 {
-  margin-left: 2%;
+.signup > div > h2 {
+  margin-left: 6%;
+  margin-top: 2%;
 }
-.login > h2 {
-  margin-left: 2%;
+.login > div > h2 {
+  margin-left: 6%;
+  margin-top: 2%;
 }
 
-.product > h2 {
-  margin-left: 2%;
+.product > div > h2 {
+  margin-left: 6%;
+  margin-top: 2%;
 }
 
 .inputBox {
@@ -79,7 +89,7 @@
   height: 40px;
   float: left;
   border-radius: 50%;
-  margin-top: 5px;
+  margin-top: 14px;
   margin-left: 20px;
 }
 .invalid-input {
@@ -91,28 +101,18 @@
 }
 
 .productlist {
+  display: flex;
   text-align: center;
-  margin-top: 10px;
+  justify-content: center;
+  margin-top: 6%;
+}
+
+.table {
+  width: 80vw !important;
+  margin-bottom: 6%;
 
 }
 
-.list-scroll {
-  height: 50vh;
-  overflow-y: scroll;
-  margin-bottom: 20px;
-  margin-left: 20px;
-}
-
-.productlist ul li {
-  display: inline-block;
-  border: 1px solid skyblue;
-  padding: 10px;
-  width: 150px;
-}
-
-.productlist ul {
-  margin: 0;
-}
 
 .del-btn {
   background-color: red;
@@ -140,7 +140,7 @@
   border-radius: 10px;
 }
 
-.heading{
+.heading {
   font-size: 18px;
   font-weight: 600;
 }

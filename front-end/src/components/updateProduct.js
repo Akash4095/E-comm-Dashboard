@@ -52,55 +52,57 @@ const UpdateProduct = () => {
 
     return (
         <div className='product'>
-            <h2>Update Product</h2>
-            <input
-                className="inputBox"
-                type="text"
-                placeholder="Enter Product Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            {
-                error && !name && <span className='invalid-input'>Enter Valid Name</span>
-            }
+            <div>
+                <h2>Update Product</h2>
+                <input
+                    className="inputBox"
+                    type="text"
+                    placeholder="Enter Product Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                {
+                    error && !name && <span className='invalid-input'>Enter Valid Name</span>
+                }
 
-            <input
-                className="inputBox"
-                type="text"
-                placeholder="Enter Product Price"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-            />
-            {
-                error && !price && <span className='invalid-input'>Enter Valid Product Price</span>
-            }
-            <input
-                className="inputBox"
-                type="text"
-                placeholder="Enter Product Category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-            />
-            {
-                error && !category && <span className='invalid-input'>Enter Valid Product Category</span>
-            }
-            <input
-                className="inputBox"
-                type="text"
-                placeholder="Enter Product Company"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-            />
-            {
-                error && !company && <span className='invalid-input'>Enter Product Company</span>
-            }
-            <button
-                className="add-btn"
-                type="button"
-                onClick={() => handleUpdateProduct()}
-            >
-                Update Product
-            </button>
+                <input
+                    className="inputBox"
+                    type="text"
+                    placeholder="Enter Product Price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                />
+                {
+                    error && !price && <span className='invalid-input'>Enter Valid Product Price</span>
+                }
+                <input
+                    className="inputBox"
+                    type="text"
+                    placeholder="Enter Product Category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                />
+                {
+                    error && !category && <span className='invalid-input'>Enter Valid Product Category</span>
+                }
+                <input
+                    className="inputBox"
+                    type="text"
+                    placeholder="Enter Product Company"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                />
+                {
+                    error && !company && <span className='invalid-input'>Enter Product Company</span>
+                }
+                <button
+                    className="add-btn"
+                    type="button"
+                    onClick={() => handleUpdateProduct()}
+                >
+                    Update Product
+                </button>
+            </div>
         </div>
     )
 }

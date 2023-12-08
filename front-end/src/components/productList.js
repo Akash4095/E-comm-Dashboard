@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Icon, Table } from 'semantic-ui-react'
 
 const ProductList = () => {
     const [products, setProducts] = useState([])
@@ -41,39 +42,48 @@ const ProductList = () => {
 
     return (
         <div className='productlist'>
-            <div className='heading'>Product List</div>
-            <input type='text' placeholder='Search Products' className='search-box' onChange={(e) => handleSearch(e.target.value)} />
+            <div>
+                <div className='heading'>Product List</div>
+                <input type='text' placeholder='Search Products' className='search-box' onChange={(e) => handleSearch(e.target.value)} />
+                <div className='table'>
+                    <Table celled>
+                        <Table.Header>
+                            <Table.Row>
+                                <Table.HeaderCell>S No.</Table.HeaderCell>
+                                <Table.HeaderCell>Name</Table.HeaderCell>
+                                <Table.HeaderCell>Price</Table.HeaderCell>
+                                <Table.HeaderCell>Company</Table.HeaderCell>
+                                <Table.HeaderCell>Category</Table.HeaderCell>
+                                <Table.HeaderCell>Actions</Table.HeaderCell>
+                            </Table.Row>
+                        </Table.Header>
 
-            <ul>
-                <li>S No.</li>
-                <li>Name</li>
-                <li>Price</li>
-                <li>Company</li>
-                <li>Category</li>
-                <li>Actions</li>
-            </ul>
-            <div className='list-scroll'>
-                {
-                    products.length > 0 ? products.map((item, index) =>
-                        <ul key={index}>
-                            <li>{index + 1}</li>
-                            <li>{item.name}</li>
-                            <li>{item.price}</li>
-                            <li>{item.company}</li>
-                            <li>{item.category}</li>
-                            <li><button onClick={() => handleDeleteItem(item)} className='del-btn'>Delete</button>
-                                <Link to={"/update/" + item._id} >
-                                    <button className='update-btn'>Update</button>
-                                </Link>
+                        <Table.Body className='table'>
+                            {
+                                products.length > 0 ? products.map((item, index) =>
+                                    <Table.Row>
+                                        <Table.Cell>{index + 1}</Table.Cell>
+                                        <Table.Cell>{item.name}</Table.Cell>
+                                        <Table.Cell>{item.price}</Table.Cell>
+                                        <Table.Cell>{item.company}</Table.Cell>
+                                        <Table.Cell>{item.category}</Table.Cell>
+                                        <Table.Cell>
+                                            <button onClick={() => handleDeleteItem(item)} className='del-btn'>Delete</button>
+                                            <Link to={"/update/" + item._id} >
+                                                <button className='update-btn'>Update</button>
+                                            </Link>
+                                        </Table.Cell>
 
-                            </li>
-                        </ul>
-                    )
-                        :
-                        <h2>No Results Found</h2>
-                }
+                                    </Table.Row>
+                                )
+                                    :
+                                    <h2>No Results Found</h2>
+                            }
+
+                        </Table.Body>
+                    </Table>
+                </div>
             </div>
-
         </div>
     )
 }

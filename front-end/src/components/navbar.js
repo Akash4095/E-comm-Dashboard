@@ -12,11 +12,11 @@ const Navbar = () => {
     }
 
     return (
-        <div>
+        <div className='nav-ul'>
             <img src={logo} alt="" className='logo' />
             {
                 auth ?
-                    <ul className='nav-ul'>
+                    <ul >
                         <li> <Link to="/" >Products</Link> </li>
                         <li> <Link to="/add" >Add Product</Link> </li>
                         

@@ -34,44 +34,46 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <h2>Register</h2>
-      <input
-        className="inputBox"
-        type="text"
-        placeholder="Enter Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      {
-        error && !name && <span className='invalid-input'>Enter Valid Name</span>
-      }
-      <input
-        className="inputBox"
-        type="text"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      {
-        error && !email && <span className='invalid-input'>Enter Valid Email</span>
-      }
-      <input
-        className="inputBox"
-        type="password"
-        placeholder="Enter Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {
-        error && !password && <span className='invalid-input'>Enter Valid Password</span>
-      }
-      <button
-        className="add-btn"
-        type="button"
-        onClick={() => handleSignup()}
-      >
-        Sign Up
-      </button>
+      <div>
+        <h2>Register</h2>
+        <input
+          className="inputBox"
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        {
+          error && !name && <span className='invalid-input'>Enter Valid Name</span>
+        }
+        <input
+          className="inputBox"
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {
+          error && !email && <span className='invalid-input'>Enter Valid Email</span>
+        }
+        <input
+          className="inputBox"
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {
+          error && !password && <span className='invalid-input'>Enter Valid Password</span>
+        }
+        <button
+          className="add-btn"
+          type="button"
+          onClick={() => handleSignup()}
+        >
+          Sign Up
+        </button>
+      </div>
     </div>
   );
 };
